@@ -1,0 +1,84 @@
+@startuml
+class Patient {
+    -ID: String
+    -Name: String
+    -lastName: String
+    -Sex: boolean
+    -birthDate: Date
+    -Height: double
+    -Weight: double
+    -address: String
+    -images: List<Image>
+    -diseases: List<Disease>
+    
+    +Patient()
+    +Patient(ID: String, Name: String, lastName: String, Sex: boolean,birthDate: String, Height: double,Weight: double)
+    
+    +ObtainID(): String
+    +ObtainName(): String
+    +ObtainLastName(): String
+    +ObtainSex(): boolean
+    +ObtainBirthdate(): Date
+    +ObtainHeight(): double
+    +ObtainWeight(): double
+    +ObtainAddress(): String
+    +ObtainImages(): List<Image>
+    +ObtainDiseases(): List<Disease>
+    +getById(id: String): Pacient
+    +findTallPatientsIDs(): List<String>
+    +getWomansWithDengue(): int
+    +orderByName(): List<Patient>
+    +orderByWeight(): List<Patient>
+    
+    +setID(id: String): void
+    +setName(name: String): void
+    +setLastName(lastName: String): void
+    +setBirthdate(birthdate: Date): void
+    +setSex(sex: boolean): void
+    +setWeight(weight: double): void
+    +setHeight(height: double): void
+    +setAddress(address: String): void
+    +addImage(images: Image): void
+    +addDisease(diseases: Disease): void
+    +deleteImage(image: Image): void
+    +deleteDisease(disease: Disease): void
+  }
+  class Image {
+    -name: String
+    -date: Date
+    -comments: String
+    -type: String
+
+    +Image()
+    +Image(name: String, date: Date, comments: String, type: String)
+    
+    +ObtainName(): String
+    +ObtainDate(): Date
+    +ObtainComment(): String
+    +ObtainType(): String
+
+    +setName(name: String): void
+    +setDate(date: Date): void
+    +setType(type: String): void
+    +setComment(comment: String): void
+
+  }
+  class Disease {
+    -name: String
+    -date: Date
+    -treatment: String
+
+    +Disease()
+    +Disease(name: String, date: Date, treatment: String)
+    
+    +ObtainName(): String
+    +ObtainDate(): Date
+    +ObtainTreatment(): String
+    
+    +setName(name: String): void
+    +setDate(date: Date): void
+    +setTreatment(treatment: String): void
+  }
+  Patient "1" *->"0..*" Image : contains
+  Patient "1" *->"0..*" Disease : contains
+@enduml
